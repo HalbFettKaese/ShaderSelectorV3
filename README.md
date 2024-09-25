@@ -82,3 +82,14 @@
  A peculiarity that this introduces is that under this mapping, 0 is the same value as 1, and the value that normally represents 1, namely 255/255, would become redundant. That's why, when using an operation that uses overflow, the target value is no longer interpreted on a scale from 0/255 to 255/255, but instead, from 0/256 to 255/256. This has the effect that a marker that uses overflow operations will be able to target values like `0.5=128/256` or `0.25=64/256` with perfect precision, while other operations can only approximate them, as `127/255≈0.498` and `128/255≈0.502`. But this also has the effect that the color code that you enter into the particle will be slightly different from the target value that this is interpreted as. This results in the rule:
 
  When using an operation that uses overflow and you want to target the value `x`, set the marker particle to have a blue component of `x*256/255`.
+
+## History
+
+This framework is based on a [previous version](https://github.com/HalbFettKaese/common-shaders) that was used in an earlier project. That version had been extracted into its own repository by [CloudWolfYT](https://github.com/CloudWolfYT) to create [ShaderSelectorV2](https://github.com/CloudWolfYT/ShaderSelectorV2), and the current repository, ShaderSelectorV3, is a complete rewrite that includes some notable changes:
+* ShaderSelectorV2 was using the post shader format from before Minecraft 1.21.2, while V3 was developed in 24w38a (a 1.21.2 snapshot).
+* The data sampler has a changed layout.
+* Interpolation counts in real time instead of frames (`rate` is in `1/seconds` instead of `1/frames`).
+* Every channel saves how much time passed since its target value was last changed.
+* Apart from the previous interpolation that only used constant motion, there's a new interpolation mode that uses smoothly accelerated motion.
+* Interpolation can be set to use overflow (so to get from 0.1 to 0.9, it goes 0.1-0.2=0.9 instead of 0.1+0.8=0.9).
+* Adding/editing a channel needs you to only change a single config file (`assets/shader_selector/include/marker_settings.gls`) and change the height of the data buffer (`assets/minecraft/post_effect/transparency.json`) to accommodate the new channel.

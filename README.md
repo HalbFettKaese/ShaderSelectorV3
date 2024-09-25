@@ -87,7 +87,7 @@
 
 ## History
 
-This framework is based on a [previous version](https://github.com/HalbFettKaese/common-shaders) that was used in an earlier project. That version had been extracted into its own repository by [CloudWolfYT](https://github.com/CloudWolfYT) to create [ShaderSelectorV2](https://github.com/CloudWolfYT/ShaderSelectorV2), and the current repository, ShaderSelectorV3, is a complete rewrite that includes some notable changes:
+This framework is based on a [previous version](https://github.com/HalbFettKaese/common-shaders) that was used in an earlier project. That version had been extracted into its own repository and popularized by [CloudWolfYT](https://github.com/CloudWolfYT) to create [ShaderSelectorV2](https://github.com/CloudWolfYT/ShaderSelectorV2), and the current repository, ShaderSelectorV3, is a complete rewrite that includes some notable changes:
 * ShaderSelectorV2 was using the post shader format from before Minecraft 1.21.2, while V3 was developed in 24w38a (a 1.21.2 snapshot).
 * The data sampler has a changed layout.
 * Interpolation counts in real time instead of frames (`rate` is in `1/seconds` instead of `1/frames`).

@@ -5,7 +5,8 @@
  The attached resource pack includes not only a framework for letting commands communicate with post processing shaders, but also a simple example of how to use that to do cool things.
 
  Here is a video showcasing these demonstration features:
- ![Demonstration video](media\example_video.mp4)
+
+ https://github.com/user-attachments/assets/f54763f8-35a4-4a24-a893-06ca752d109a
 
  If you want to try it out yourself, install the resource pack and run one of these commands:
  ```hs
@@ -23,7 +24,8 @@
 
 ## How does this work?
  At its core, this framework is structured around a data buffer that is defined in the `transparency` post effect pipeline. This buffer saves the inputs that are given using commands, and processes them to create an output. How many channels there are and how they are used can be changed, but in the given example, this data buffer looks like this:
- ![Data buffer layout](media\data_layout.png)
+ ![data_layout](https://github.com/user-attachments/assets/edb2b5a3-786d-476a-98f0-8d0ae54f211c)
+
  In this, each row is responsible for one "channel" which is in control of one effect. Within a row that handles a channel, each column has its own responsibility:
  * Column 0 (input) saves the last input that was received from a command. This includes:
    * Whether there has been an input on this channel since the buffer was created (red component)

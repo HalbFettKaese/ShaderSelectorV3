@@ -1,0 +1,237 @@
+{
+    "targets" : {
+        "final": {},
+        "swap": {},
+        "swap2": {},
+        "data": {"width": 5, "height": 3},
+        "data_swap": {"width": 5, "height": 3}
+    },
+    "passes": [
+        {
+            "program": "shader_selector:post/internal/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "data"
+                }
+            ],
+            "output": "data_swap"
+        },
+        {
+            "program": "shader_selector:post/data",
+            "inputs": [
+                {
+                    "sampler_name": "Data",
+                    "target": "data_swap"
+                },
+                {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:particles"
+                }
+            ],
+            "output": "data"
+        },
+        {
+            "program": "shader_selector:post/internal/remove_particles",
+            "inputs": [
+                {
+                    "sampler_name": "Particles",
+                    "target": "minecraft:particles"
+                }
+            ],
+            "output": "swap"
+        },
+        {
+            "program": "minecraft:post/transparency",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "minecraft:main"
+                },
+                {
+                    "sampler_name": "MainDepth",
+                    "target": "minecraft:main",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "Translucent",
+                    "target": "minecraft:translucent"
+                },
+                {
+                    "sampler_name": "TranslucentDepth",
+                    "target": "minecraft:translucent",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "ItemEntity",
+                    "target": "minecraft:item_entity"
+                },
+                {
+                    "sampler_name": "ItemEntityDepth",
+                    "target": "minecraft:item_entity",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "Particles",
+                    "target": "swap"
+                },
+                {
+                    "sampler_name": "ParticlesDepth",
+                    "target": "minecraft:particles",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "Clouds",
+                    "target": "minecraft:clouds"
+                },
+                {
+                    "sampler_name": "CloudsDepth",
+                    "target": "minecraft:clouds",
+                    "use_depth_buffer": true
+                },
+                {
+                    "sampler_name": "Weather",
+                    "target": "minecraft:weather"
+                },
+                {
+                    "sampler_name": "WeatherDepth",
+                    "target": "minecraft:weather",
+                    "use_depth_buffer": true
+                }
+            ],
+            "output": "final"
+        },
+        {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "final",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 1.0, 0.0 ]
+                }
+            ]
+        },
+        {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap2",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 0.0, 1.0 ]
+                }
+            ]
+        }, {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap2",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 1.0, 0.0 ],
+                    "RadiusMultiplier" : 0.5
+                }
+            ]
+        },
+        {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap2",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 0.0, 1.0 ],
+                    "RadiusMultiplier" : 0.5
+                }
+            ]
+        }, {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap2",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 1.0, 0.0 ],
+                    "RadiusMultiplier" : 0.25
+                }
+            ]
+        },
+        {
+            "program": "minecraft:post/box_blur",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap",
+                    "bilinear": true
+                }
+            ],
+            "output": "swap2",
+            "uniforms": [
+                {
+                    "name": "BlurDir",
+                    "values": [ 0.0, 1.0 ],
+                    "RadiusMultiplier" : 0.25
+                }
+            ]
+        },
+        {
+            "program": "shader_selector:post/shader",
+            "inputs": [
+                {
+                    "sampler_name": "Main",
+                    "target": "final"
+                },
+                {
+                    "sampler_name": "Data",
+                    "target": "data"
+                },
+                {
+                    "sampler_name": "Blur",
+                    "target": "swap2"
+                }
+            ],
+            "output": "swap"
+        },
+        {
+            "program": "minecraft:post/blit",
+            "inputs": [
+                {
+                    "sampler_name": "In",
+                    "target": "swap"
+                }
+            ],
+            "output": "minecraft:main"
+        }
+    ]
+}

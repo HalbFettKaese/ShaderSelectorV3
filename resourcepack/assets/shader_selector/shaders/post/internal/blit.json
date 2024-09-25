@@ -1,0 +1,9 @@
+{
+    "vertex": "shader_selector:post/internal/blit",
+    "fragment": "shader_selector:post/internal/blit",
+    "samplers": [
+        { "name": "InSampler" }
+    ],
+    "uniforms": [
+    ]
+}

@@ -1,0 +1,11 @@
+{
+    "vertex": "shader_selector:post/internal/blit",
+    "fragment": "shader_selector:post/data",
+    "samplers": [
+        { "name": "DataSampler" },
+        { "name": "ParticlesSampler" }
+    ],
+    "uniforms": [
+        { "name": "GameTime", "type": "float", "count": 1, "values": [ 0.0 ] }
+    ]
+}

@@ -78,3 +78,7 @@
  In this, what is meant by "overflow" needs some further explanation:
 
  When I say that an operation uses overflow, that simply means that the value is set to wrap back to 0 when it goes above 1, and vice versa. So to get from 0.9 to 0.1, you can simply add 0.2, which is a shorter path than subtracting 0.8.
+
+ A peculiarity that this introduces is that under this mapping, 0 is the same value as 1, and the value that normally represents 1, namely 255/255, would become redundant. That's why, when using an operation that uses overflow, the target value is no longer interpreted on a scale from 0/255 to 255/255, but instead, from 0/256 to 255/256. This has the effect that a marker that uses overflow operations will be able to target values like `0.5=128/256` or `0.25=64/256` with perfect precision, while other operations can only approximate them, as `127/255≈0.498` and `128/255≈0.502`. But this also has the effect that the color code that you enter into the particle will be slightly different from the target value that this is interpreted as. This results in the rule:
+
+ When using an operation that uses overflow and you want to target the value `x`, set the marker particle to have a blue component of `x*256/255`.

@@ -93,3 +93,7 @@ This framework is based on a [previous version](https://github.com/HalbFettKaese
 * Apart from the previous interpolation that only used constant motion, there's a new interpolation mode that uses smoothly accelerated motion.
 * Interpolation can be set to use overflow (so to get from 0.1 to 0.9, it goes 0.1-0.2=0.9 instead of 0.1+0.8=0.9).
 * Adding/editing a channel needs you to only change a single config file (`assets/shader_selector/include/marker_settings.gls`) and change the height of the data buffer (`assets/minecraft/post_effect/transparency.json`) to accommodate the new channel.
+
+## Credits
+
+Everything inside the current state of this repository was created by me on my own. However, many of the added features have been inspired by different interactions with people who were using the previous versions of this resource pack, so I want to thank them as well as everyone else who has been using and sharing it in the past or in the future.

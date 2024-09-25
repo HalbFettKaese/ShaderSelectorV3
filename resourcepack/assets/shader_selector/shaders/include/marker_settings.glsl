@@ -8,7 +8,7 @@ Operations:
 4: interpolate with acceleration and overflow
 signature:
 ADD_MARKER(
-|          data_row,
+|          channel,
 |          |  ivec2(screen_x,screen_y),
 |          |  |           marker_green,
 |          |  |           |    operation,

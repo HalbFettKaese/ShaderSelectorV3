@@ -8,6 +8,7 @@
     },
     "passes": [
         {
+            "_comment": "Used by ShaderSelectorV3",
             "program": "shader_selector:post/internal/blit",
             "inputs": [
                 {
@@ -18,6 +19,7 @@
             "output": "data_swap"
         },
         {
+            "_comment": "Used by ShaderSelectorV3",
             "program": "shader_selector:post/data",
             "inputs": [
                 {
@@ -32,6 +34,7 @@
             "output": "data"
         },
         {
+            "_comment": "Used by ShaderSelectorV3",
             "program": "shader_selector:post/internal/remove_particles",
             "inputs": [
                 {
@@ -42,6 +45,7 @@
             "output": "swap"
         },
         {
+            "_comment": "Default pass",
             "program": "minecraft:post/transparency",
             "inputs": [
                 {
@@ -102,6 +106,7 @@
             "output": "final"
         },
         {
+            "_comment": "Create blurred copy of minecraft:main for the example shader from ShaderSelectorV3",
             "program": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -206,6 +211,7 @@
             ]
         },
         {
+            "_comment": "Run the example shader from ShaderSelectorV3",
             "program": "shader_selector:post/shader",
             "inputs": [
                 {

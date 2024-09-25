@@ -45,8 +45,5 @@ void main() {
             col = vec4(vec3(fract(decodeColor(col))), 1.0);
         fragColor = col;
     }
-    if (texCoord.x > .75 && texCoord.y < .25) {
-        fragColor = vec4(vec3(fract(GameTime * 1200.0)), 1.0);
-    }
 #endif
 }

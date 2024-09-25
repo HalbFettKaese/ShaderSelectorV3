@@ -25,14 +25,6 @@ void main() {
     // ShaderSelector
     if (isMarker == 1) {
         fragColor = vec4(iColor.rgb, 255) / 255.0;
-        ivec2 iCoord = ivec2(gl_FragCoord.xy);
-        if (
-            (iCoord.x + iCoord.y) % 2 != 0
-            #define ADD_MARKER(i, marker_pos, green, op, rate) || iCoord != marker_pos && iColor.g == green
-            LIST_MARKERS
-        ) {
-            discard;
-        }
         return;
     }
     // Vanilla code

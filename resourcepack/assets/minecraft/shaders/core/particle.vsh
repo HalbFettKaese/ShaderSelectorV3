@@ -41,10 +41,16 @@ void main() {
      && iColor.g <= MARKER_GREEN_MAX
      && iColor.a == MARKER_ALPHA
     );
+    ivec2 markerPos = ivec2(0, 0);
     if (isMarker == 1) {
-        vec2 markerSize = 2.0 * vec2(PIXEL_X_MAX + 1.0, PIXEL_Y_MAX + 1.0) / ScreenSize;
+        isMarker = 0;
+        #define ADD_MARKER(row, coords, green, op, rate) if (green == iColor.g) {isMarker = 1; markerPos = coords;}
+        LIST_MARKERS
+    }
+    if (isMarker == 1 && (markerPos.x+markerPos.y)%2 == 0) {
+        vec2 markerSize = 2.0 / ScreenSize;
 
-        gl_Position = vec4(-1 + corners[gl_VertexID % 4] * markerSize, 0.0, 1.0);
+        gl_Position = vec4(-1 + (vec2(markerPos) + corners[gl_VertexID % 4]) * markerSize, 0.0, 1.0);
 
         vertexDistance = 0.0;
         texCoord0 = vec2(0.0);

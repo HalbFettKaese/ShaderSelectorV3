@@ -1,5 +1,6 @@
 #version 330
 
+#moj_import <shader_selector:marker_settings.glsl>
 #moj_import <shader_selector:utils.glsl>
 
 uniform sampler2D MainSampler;

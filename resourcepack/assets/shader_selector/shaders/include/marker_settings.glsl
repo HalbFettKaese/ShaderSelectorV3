@@ -1,19 +1,6 @@
 
 /*
-Operations:
-0: set
-1: interpolate at rate per second
-2: interpolate at rate per second with overflow
-3: interpolate with acceleration
-4: interpolate with acceleration and overflow
-signature:
-ADD_MARKER(
-|          channel,
-|          |  ivec2(screen_x,screen_y),
-|          |  |           marker_green,
-|          |  |           |    operation,
-|          |  |           |    |  interpolation_rate)
-|          |  |           |    |  |
+ADD_MARKER(channel, pos, green, op, rate)
 */
 #define LIST_MARKERS \
 ADD_MARKER(1, ivec2(0,0), 253, 1, 0.1) \

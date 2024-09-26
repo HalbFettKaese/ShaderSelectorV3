@@ -148,7 +148,7 @@ void main() {
         return;
     }
     if (iCoord.x < 4) {
-        #define ADD_MARKER(row, pixelPos, green, op, rate) if (iCoord.y == row) readMarker(iCoord, pixelPos, green, op, rate);
+        #define ADD_MARKER(row, pixelPos, green, alpha, op, rate) if (iCoord.y == row) readMarker(iCoord, pixelPos, green, op, rate);
         LIST_MARKERS
 
         // Clamp timestamp to be at most 600 seconds (10 minutes) behind GameTime

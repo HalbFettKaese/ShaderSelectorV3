@@ -55,17 +55,17 @@
 
  Which particle colors are recognized as marker particles, as well as which channel they target and other information is all defined in `assets/shader_selector/shaders/include/marker_settings.glsl`.
 
- A marker is then defined by adding it to the ´LIST_MARKERS´ macro as `ADD_MARKER(<channel>, <screen pixel position>, <wanted green component>, <operation>, <interpolation rate>)`.
+ A marker is then defined by adding it to the ´LIST_MARKERS´ macro as `ADD_MARKER(<channel>, <screen pixel position>, <wanted green component>, <wanted alpha component>, <operation>, <interpolation rate>)`.
 
- If the `MARKER_GREEN_MIN` and `MARKER_GREEN_MAX` macros get adjusted so that `min <= wanted green <= max`, a particle that has the color `(MARKER_RED, <wanted green component>, <any blue value>, MARKER_ALPHA)/255` will then be recognized as a marker particle that applies the instructions that are given in the `ADD_MARKER` statement to the specified channel. \
- `MARKER_RED` and `MARKER_ALPHA` remain constant throughout all markers and should preferably not be changed.
+ With this, a particle that has the color `(MARKER_RED, <wanted green component>, <any blue value>, <wanted alpha component>)/255` will then be recognized as a marker particle that applies the instructions that are given in the `ADD_MARKER` statement to the specified channel. \
+ `MARKER_RED` remains constant throughout all markers and should preferably not be changed.
 
  The chosen blue value that the particle is displayed with will then be the "target value" that is written to the data buffer.
 
  The arguments of the `ADD_MARKER` function have the following meaning:
  * `<channel>`: The channel that is written to when the marker is detected.
  * `<screen pixel position>`: The pixel position on the screen on which the information is sent to the post shader. Is useful to change when two different markers should be possible to use at the same time, for example when controlling different channels. A pixel position is only valid if `pixel.x + pixel.y` is an even number.
- * `<wanted green component>`: A particle is only recognized as this marker if its green component matches the given value.
+ * `<wanted green/alpha component>`: A particle is only recognized as this marker if its green and alpha components match the given values.
  * `<operation>`: Changes the mode of how the value of the channel on the data buffer will follow the target value that is given in the particle's blue component.\
    Valid operations are:
     * `0`: Set value to input. Set speed to 0.

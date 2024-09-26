@@ -37,14 +37,11 @@ void main() {
     iColor = ivec4(round(Color * 255.));
     isMarker = int(
         iColor.r == MARKER_RED
-     && iColor.g >= MARKER_GREEN_MIN
-     && iColor.g <= MARKER_GREEN_MAX
-     && iColor.a == MARKER_ALPHA
     );
     ivec2 markerPos = ivec2(0, 0);
     if (isMarker == 1) {
         isMarker = 0;
-        #define ADD_MARKER(row, coords, green, op, rate) if (green == iColor.g) {isMarker = 1; markerPos = coords;}
+        #define ADD_MARKER(row, coords, green, alpha, op, rate) if (ivec2(green, alpha) == iColor.ga) {isMarker = 1; markerPos = coords;}
         LIST_MARKERS
     }
     if (isMarker == 1 && (markerPos.x+markerPos.y)%2 == 0) {

@@ -16,8 +16,6 @@ in vec4 vertexColor;
 out vec4 fragColor;
 
 // ShaderSelector
-#moj_import <shader_selector:marker_settings.glsl>
-
 flat in int isMarker;
 flat in ivec4 iColor;
 

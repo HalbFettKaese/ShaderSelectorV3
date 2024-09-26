@@ -15,8 +15,8 @@ out vec4 fragColor;
 
 void main() {
 
-    float greyscaleChannel = decodeColor(texelFetch(DataSampler, ivec2(4, 1), 0));
-    float rotationChannel = decodeColor(texelFetch(DataSampler, ivec2(4, 2), 0));
+    float greyscaleChannel = decodeColor(texelFetch(DataSampler, ivec2(4, EXAMPLE_GREYSCALE_CHANNEL), 0));
+    float rotationChannel = decodeColor(texelFetch(DataSampler, ivec2(4, EXAMPLE_ROTATION_CHANNEL), 0));
 
     float angle = radians(rotationChannel * 360.0);
 

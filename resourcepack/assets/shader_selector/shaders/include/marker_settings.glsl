@@ -5,7 +5,7 @@
 
 /*
 signature:
- ADD_MARKER(channel, pos, green, op, rate)
+ ADD_MARKER(channel, pos, green, alpha, op, rate)
 */
 // append different marker definitions
 #define LIST_MARKERS \

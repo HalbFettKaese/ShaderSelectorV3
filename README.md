@@ -93,7 +93,7 @@ This framework is based on a [previous version](https://github.com/HalbFettKaese
 * Every channel saves how much time passed since its target value was last changed.
 * Apart from the previous interpolation that only used constant motion, there's a new interpolation mode that uses smoothly accelerated motion.
 * Interpolation can be set to use overflow (so to get from 0.1 to 0.9, it goes 0.1-0.2=0.9 instead of 0.1+0.8=0.9).
-* Adding/editing a channel needs you to only change a single config file (`assets/shader_selector/include/marker_settings.gls`) and change the height of the data buffer (`assets/minecraft/post_effect/transparency.json`) to accommodate the new channel.
+* Adding/editing a channel needs you to only change a single config file (`assets/shader_selector/include/marker_settings.glsl`) and change the height of the data buffer (`assets/minecraft/post_effect/transparency.json`) to accommodate the new channel.
 
 ## Credits
 

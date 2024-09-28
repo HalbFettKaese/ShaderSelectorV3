@@ -51,11 +51,11 @@
  In the given example, there are 2 channels as well as the internally used `GameTime` row, making for a total of 3 rows. That's why it says `"height": 3` in both the definition of the targets `data` and `data_swap`.
 
 ### How do I give an input to a channel?
- When a particle is recognized as an input that is sent to the post shader, I will call it a "marker particle". A marker particle is identified by a core shader based on its color, and will be transformed to fill a specific pixel coordinate on the screen, which is then read by the post shader.
+ When a particle is recognized as an input that is sent to the post shader, I will call it a "marker particle". A marker particle is identified by a core shader based on its color, and will be sent to and read by the post shader.
 
  Which particle colors are recognized as marker particles, as well as which channel they target and other information is all defined in `assets/shader_selector/shaders/include/marker_settings.glsl`.
 
- A marker is then defined by adding it to the ´LIST_MARKERS´ macro as `ADD_MARKER(<channel>, <screen pixel position>, <wanted green component>, <wanted alpha component>, <operation>, <interpolation rate>)`.
+ A marker is then defined by adding it to the ´LIST_MARKERS´ macro as `ADD_MARKER(<channel>, <wanted green component>, <wanted alpha component>, <operation>, <interpolation rate>)`.
 
  With this, a particle that has the color `(MARKER_RED, <wanted green component>, <any blue value>, <wanted alpha component>)/255` will then be recognized as a marker particle that applies the instructions that are given in the `ADD_MARKER` statement to the specified channel. \
  `MARKER_RED` remains constant throughout all markers and should preferably not be changed.
@@ -64,7 +64,6 @@
 
  The arguments of the `ADD_MARKER` function have the following meaning:
  * `<channel>`: The channel that is written to when the marker is detected.
- * `<screen pixel position>`: The pixel position on the screen on which the information is sent to the post shader. Is useful to change when two different markers should be possible to use at the same time, for example when controlling different channels. A pixel position is only valid if `pixel.x + pixel.y` is an even number.
  * `<wanted green/alpha component>`: A particle is only recognized as this marker if its green and alpha components match the given values.
  * `<operation>`: Changes the mode of how the value of the channel on the data buffer will follow the target value that is given in the particle's blue component.\
    Valid operations are:

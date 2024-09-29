@@ -14,27 +14,38 @@ in vec2 texCoord;
 
 out vec4 fragColor;
 
+float readChannel(int channel) {
+    return decodeColor(texelFetch(DataSampler, ivec2(4, channel), 0));
+}
+
 void main() {
 
-    float greyscaleChannel = decodeColor(texelFetch(DataSampler, ivec2(4, EXAMPLE_GREYSCALE_CHANNEL), 0));
-    float rotationChannel = decodeColor(texelFetch(DataSampler, ivec2(4, EXAMPLE_ROTATION_CHANNEL), 0));
+    // Apply rotation effect
+    // Read rotation amount
+    float rotationAmount = readChannel(EXAMPLE_ROTATION_CHANNEL);
 
-    float angle = radians(rotationChannel * 360.0);
+    // Convert to radians
+    float angle = radians(rotationAmount * 360.0);
 
+    // Apply rotation to texture coordinates
     vec2 uv = (texCoord - 0.5) * OutSize;
-
     uv *= mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-
     uv = uv / OutSize + 0.5;
 
+    // Show color at texture coordinates
     fragColor = texture(MainSampler, uv);
-
+    // If texture coordinates are out of bounds, show blurred version
     if (uv.x < 0. || uv.x > 1. || uv.y < 0. || uv.y > 1.) {
         fragColor = texture(BlurSampler, (uv - 0.5)*sqrt(0.5) + 0.5);
     }
 
+    // Apply greyscale effect
+    // Get full greyscale color
     vec3 greyscale = vec3(dot(fragColor.rgb, vec3(0.2126, 0.7152, 0.0722)));
-    fragColor.rgb = greyscale + (fragColor.rgb - greyscale) * (1. - greyscaleChannel);
+    
+    // Apply greyscale color
+    float greyscaleAmount = readChannel(EXAMPLE_GREYSCALE_CHANNEL);
+    fragColor.rgb = mix(fragColor.rgb, greyscale, greyscaleAmount);
 
 //#define DEBUG
 #ifdef DEBUG

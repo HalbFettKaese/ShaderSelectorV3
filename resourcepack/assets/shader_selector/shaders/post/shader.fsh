@@ -1,8 +1,5 @@
 #version 330
 
-#moj_import <shader_selector:marker_settings.glsl>
-#moj_import <shader_selector:utils.glsl>
-
 uniform sampler2D MainSampler;
 uniform sampler2D DataSampler;
 uniform sampler2D BlurSampler;
@@ -10,13 +7,13 @@ uniform sampler2D BlurSampler;
 uniform vec2 OutSize;
 uniform float GameTime;
 
+#moj_import <shader_selector:marker_settings.glsl>
+#moj_import <shader_selector:utils.glsl>
+#moj_import <shader_selector:data_reader.glsl>
+
 in vec2 texCoord;
 
 out vec4 fragColor;
-
-float readChannel(int channel) {
-    return decodeColor(texelFetch(DataSampler, ivec2(4, channel), 0));
-}
 
 void main() {
 

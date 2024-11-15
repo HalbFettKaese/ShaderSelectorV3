@@ -97,7 +97,7 @@ This framework is based on a [previous version](https://github.com/HalbFettKaese
 
 ## Credits
 
-Everything inside the current state of the resource pack was created by me on my own. However, many of the added features have been inspired by different interactions with people who were using the previous versions of this resource pack, so I want to thank them as well as everyone else who has been using and sharing it in the past or in the future.
+This resource pack was created by me on my own and has been improved with the help of the listed contributors. However, many of the added features have been inspired by different interactions with people who were using the previous versions of this resource pack, so I want to thank them as well as everyone else who has been using and sharing it in the past or in the future.
 
 If you want to thank me for my work, please consider making a small donation.\
 [![Donate](https://img.shields.io/badge/Donate-Ko--fi-green.svg)](https://ko-fi.com/halbfettkaese)

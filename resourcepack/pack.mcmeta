@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "ShaderSelectorV3.0.2\nAdds communication between commands and post processing shaders.",
+        "description": "ShaderSelectorV3.0.3\nAdds communication between commands and post processing shaders.",
         "pack_format": 46
     }
 }

@@ -1,6 +1,9 @@
 #version 150
 
 #moj_import <minecraft:fog.glsl>
+#moj_import <minecraft:dynamictransforms.glsl>
+#moj_import <minecraft:projection.glsl>
+#moj_import <minecraft:globals.glsl>
 
 in vec3 Position;
 in vec2 UV0;
@@ -9,18 +12,13 @@ in ivec2 UV2;
 
 uniform sampler2D Sampler2;
 
-uniform mat4 ModelViewMat;
-uniform mat4 ProjMat;
-uniform int FogShape;
-
-out float vertexDistance;
+out float sphericalVertexDistance;
+out float cylindricalVertexDistance;
 out vec2 texCoord0;
 out vec4 vertexColor;
 
 // ShaderSelector
 #moj_import <shader_selector:marker_settings.glsl>
-
-uniform vec2 ScreenSize;
 
 flat out int isMarker;
 flat out ivec4 iColor;
@@ -49,7 +47,8 @@ void main() {
 
         gl_Position = vec4(-1 + (vec2(markerPos) + corners[gl_VertexID % 4]) * markerSize, 0.0, 1.0);
 
-        vertexDistance = 0.0;
+        sphericalVertexDistance = 0.0;
+        cylindricalVertexDistance = 0.0;
         texCoord0 = vec2(0.0);
         vertexColor = vec4(0.0);
         return;
@@ -57,7 +56,8 @@ void main() {
     // Vanilla code
     gl_Position = ProjMat * ModelViewMat * vec4(Position, 1.0);
 
-    vertexDistance = fog_distance(Position, FogShape);
+    sphericalVertexDistance = fog_spherical_distance(Position);
+    cylindricalVertexDistance = fog_cylindrical_distance(Position);
     texCoord0 = UV0;
     vertexColor = Color * texelFetch(Sampler2, UV2 / 16, 0);
 }

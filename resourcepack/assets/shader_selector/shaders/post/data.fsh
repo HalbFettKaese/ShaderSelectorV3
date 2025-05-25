@@ -6,7 +6,7 @@
 uniform sampler2D ParticlesSampler;
 uniform sampler2D DataSampler;
 
-uniform float GameTime;
+#moj_import <minecraft:globals.glsl>
 
 out vec4 fragColor;
 

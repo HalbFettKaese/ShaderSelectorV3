@@ -4,7 +4,10 @@
 
 uniform sampler2D ParticlesSampler;
 
-uniform vec2 OutSize;
+layout(std140) uniform SamplerInfo {
+    vec2 OutSize;
+    vec2 InSize;
+};
 
 in vec2 texCoord;
 

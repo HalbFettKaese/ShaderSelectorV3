@@ -10,14 +10,14 @@
 
  If you want to try it out yourself, install the resource pack and run one of these commands:
  ```hs
- # Turn on greyscale
- /particle minecraft:entity_effect{color:[0.996078431372549, 0.9921568627450981, 1.0, 0.984313725490196],scale:1f}
- # Turn off greyscale
- /particle minecraft:entity_effect{color:[0.996078431372549, 0.9921568627450981, 0.0, 0.984313725490196],scale:1f}
- # Rotate screen by 90°
- /particle minecraft:entity_effect{color:[0.996078431372549, 0.9882352941176471, 0.25098039215686274, 0.984313725490196],scale:1f}
- # Rotate screen back to normal
- /particle minecraft:entity_effect{color:[0.996078431372549, 0.9882352941176471, 0.0, 0.984313725490196],scale:1f}
+# Turn on greyscale
+/particle minecraft:entity_effect{color:[0.996078431372549, 0.9921568627450981, 1.0, 0.984313725490196],scale:1f}
+# Turn off greyscale
+/particle minecraft:entity_effect{color:[0.996078431372549, 0.9921568627450981, 0.0, 0.984313725490196],scale:1f}
+# Rotate screen by 90°
+/particle minecraft:entity_effect{color:[0.996078431372549, 0.9882352941176471, 0.25098039215686274, 0.984313725490196],scale:1f}
+# Rotate screen back to normal
+/particle minecraft:entity_effect{color:[0.996078431372549, 0.9882352941176471, 0.0, 0.984313725490196],scale:1f}
  ```
 
  The good thing about everything being controlled through particles is that the `/particle` command has an argument that lets you determine which players are able to see a particle.

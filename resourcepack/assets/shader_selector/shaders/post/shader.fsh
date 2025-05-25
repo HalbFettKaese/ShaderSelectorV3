@@ -4,8 +4,12 @@ uniform sampler2D MainSampler;
 uniform sampler2D DataSampler;
 uniform sampler2D BlurSampler;
 
-uniform vec2 OutSize;
-uniform float GameTime;
+layout(std140) uniform SamplerInfo {
+    vec2 OutSize;
+    vec2 InSize;
+};
+
+#moj_import <minecraft:globals.glsl>
 
 #moj_import <shader_selector:marker_settings.glsl>
 #moj_import <shader_selector:utils.glsl>

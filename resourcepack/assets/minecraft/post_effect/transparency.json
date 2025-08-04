@@ -10,7 +10,7 @@
         {
             "_comment": "Used by ShaderSelectorV3",
             "fragment_shader": "shader_selector:post/internal/blit",
-            "vertex_shader": "shader_selector:post/internal/blit",
+            "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "In",
@@ -22,7 +22,7 @@
         {
             "_comment": "Used by ShaderSelectorV3",
             "fragment_shader": "shader_selector:post/data",
-            "vertex_shader": "shader_selector:post/internal/blit",
+            "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "Data",
@@ -38,7 +38,7 @@
         {
             "_comment": "Used by ShaderSelectorV3",
             "fragment_shader": "shader_selector:post/internal/remove_particles",
-            "vertex_shader": "shader_selector:post/internal/blit",
+            "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "Particles",
@@ -49,7 +49,7 @@
         },
         {
             "_comment": "Default pass",
-            "vertex_shader": "minecraft:post/screenquad",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/transparency",
             "inputs": [
                 {
@@ -111,7 +111,7 @@
         },
         {
             "_comment": "Create blurred copy of minecraft:main for the example shader from ShaderSelectorV3",
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -137,7 +137,7 @@
             }
         },
         {
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -162,7 +162,7 @@
                 ]
             }
         }, {
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -188,7 +188,7 @@
             }
         },
         {
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -213,7 +213,7 @@
                 ]
             }
         }, {
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -239,7 +239,7 @@
             }
         },
         {
-            "vertex_shader": "minecraft:post/blur",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/box_blur",
             "inputs": [
                 {
@@ -267,7 +267,7 @@
         {
             "_comment": "Run the example shader from ShaderSelectorV3",
             "fragment_shader": "shader_selector:post/shader",
-            "vertex_shader": "shader_selector:post/internal/blit",
+            "vertex_shader": "minecraft:core/screenquad",
             "inputs": [
                 {
                     "sampler_name": "Main",
@@ -285,7 +285,7 @@
             "output": "swap"
         },
         {
-            "vertex_shader": "minecraft:post/blit",
+            "vertex_shader": "minecraft:core/screenquad",
             "fragment_shader": "minecraft:post/blit",
             "inputs": [
                 {

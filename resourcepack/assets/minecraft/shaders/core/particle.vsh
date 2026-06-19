@@ -45,7 +45,7 @@ void main() {
     if (isMarker == 1 && (markerPos.x+markerPos.y)%2 == 0) {
         vec2 markerSize = 2.0 / ScreenSize;
 
-        gl_Position = vec4(-1 + (vec2(markerPos) + corners[gl_VertexID % 4]) * markerSize, 0.0, 1.0);
+        gl_Position = vec4(-1 + (vec2(markerPos) + corners[gl_VertexID % 4]) * markerSize, 1.0, 1.0);
 
         sphericalVertexDistance = 0.0;
         cylindricalVertexDistance = 0.0;

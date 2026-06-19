@@ -1,8 +1,7 @@
 {
     "pack": {
         "description": "ShaderSelectorV3.0.4\nAdds communication between commands and post processing shaders.",
-        "pack_format": 65,
-        "min_format": 65,
-        "max_format": 65
+        "min_format": 88,
+        "max_format": 88
     }
 }
